@@ -12,6 +12,22 @@ pub struct Party {
     pub cake: Cake,
 }
 
+impl Default for Party {
+    fn default() -> Self {
+        Self {
+            at_restaurant: true,
+            num_people: 8,
+            cake: Cake::Chocolate,
+        }
+    }
+}
+
+impl PartialEq for Party {
+    fn eq(&self, other: &Self) -> bool {
+        self.cake == other.cake
+    }
+}
+
 fn main() {
     // 1. The code below doesn't work because Cake doesn't implement Debug.
     // - Derive the Debug trait for the Cake enum above so this code will work. Then, run the code.
@@ -37,15 +53,6 @@ fn main() {
     // - Manually implement the Default trait for the Party struct. Use the value below as the
     // default value that you return from the `default` method:
     //
-    impl Default for Party {
-        fn default() -> Self {
-            Party {
-                at_restaurant: true,
-                num_people: 8,
-                cake: Cake::Chocolate,
-            }
-        }
-    }
     //
     // Hint: If you get stuck, there is an example at
     // https://doc.rust-lang.org/std/default/trait.Default.html#how-can-i-implement-default
@@ -69,12 +76,6 @@ fn main() {
     // - Manually implement the PartialEq trait for Party. If different parties have the same cake,
     // then they are equal, no matter the location or number of attendees at the party.
     // - Uncomment and run the code below.
-
-    impl PartialEq for Party {
-        fn eq(&self, other: &Self) -> bool {
-            self.cake == other.cake
-        }
-    }
 
     let other_party = Party {
         at_restaurant: false,
