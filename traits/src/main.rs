@@ -5,6 +5,12 @@ pub enum Cake {
     Spice,
 }
 
+impl From<&Party> for Cake {
+    fn from(party: &Party) -> Self {
+        party.cake
+    }
+}
+
 #[derive(Debug)]
 pub struct Party {
     pub at_restaurant: bool,
@@ -91,12 +97,6 @@ fn main() {
     // - Uncomment the code below AND uncomment the smell_cake() function at the bottom of this file
     // - Implement `From<Party> for Cake` so that the function call below works.
     //
-
-    impl From<&Party> for Cake {
-        fn from(party: &Party) -> Self {
-            party.cake
-        }
-    }
 
     smell_cake(&party);
 
